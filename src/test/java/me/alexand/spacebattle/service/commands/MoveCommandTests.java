@@ -1,8 +1,7 @@
-package me.alexand.spacebattle;
+package me.alexand.spacebattle.service.commands;
 
 import me.alexand.spacebattle.model.Vector;
 import me.alexand.spacebattle.service.IMovable;
-import me.alexand.spacebattle.service.commands.Move;
 import me.alexand.spacebattle.service.exceptions.PositionReadException;
 import me.alexand.spacebattle.service.exceptions.PositionWriteException;
 import me.alexand.spacebattle.service.exceptions.VelocityReadException;
@@ -26,7 +25,7 @@ public class MoveCommandTests {
         when(movable.getPosition()).thenReturn(oldPosition);
         when(movable.getVelocity()).thenReturn(velocity);
 
-        new Move(movable).execute();
+        new MoveCommand(movable).execute();
 
         verify(movable, times(1)).setPosition(newPosition);
     }
@@ -35,7 +34,7 @@ public class MoveCommandTests {
     void shouldFailDueToImpossibleGetPosition(@Mock IMovable movable) {
         when(movable.getPosition()).thenThrow(PositionReadException.class);
 
-        assertThatThrownBy(() -> new Move(movable).execute())
+        assertThatThrownBy(() -> new MoveCommand(movable).execute())
                 .isInstanceOf(PositionReadException.class);
 
         verify(movable, times(1)).getPosition();
@@ -45,7 +44,7 @@ public class MoveCommandTests {
     void shouldFailDueToImpossibleGetVelocity(@Mock IMovable movable) {
         when(movable.getVelocity()).thenThrow(VelocityReadException.class);
 
-        assertThatThrownBy(() -> new Move(movable).execute())
+        assertThatThrownBy(() -> new MoveCommand(movable).execute())
                 .isInstanceOf(VelocityReadException.class);
 
         verify(movable, times(1)).getVelocity();
@@ -61,7 +60,7 @@ public class MoveCommandTests {
         doThrow(PositionWriteException.class).when(movable)
                 .setPosition(any());
 
-        assertThatThrownBy(() -> new Move(movable).execute())
+        assertThatThrownBy(() -> new MoveCommand(movable).execute())
                 .isInstanceOf(PositionWriteException.class);
 
         verify(movable, times(1)).setPosition(any());
