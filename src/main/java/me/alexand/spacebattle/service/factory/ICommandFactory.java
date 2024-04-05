@@ -1,9 +1,6 @@
 package me.alexand.spacebattle.service.factory;
 
-import me.alexand.spacebattle.service.ICommand;
-import me.alexand.spacebattle.service.IExecutable;
-import me.alexand.spacebattle.service.ILoggable;
-import me.alexand.spacebattle.service.IRetryable;
+import me.alexand.spacebattle.service.*;
 
 public interface ICommandFactory {
 
@@ -12,5 +9,15 @@ public interface ICommandFactory {
     ICommand createSubmitCommand(IExecutable executable);
 
     ICommand createRetryCommand(IRetryable retryable);
+
+    ICommand createCheckFuelCommand(IFuelPowered fuelPowered);
+
+    ICommand createMoveCommand(IMovable movable);
+
+    ICommand createRotateCommand(IRotatable rotatable);
+
+    ICommand createBurnFuelCommand(IFuelPowered fuelPowered);
+
+    ICommand createChangeVelocityCommand(IMovableAndRotatable movableAndRotatable);
 
 }
