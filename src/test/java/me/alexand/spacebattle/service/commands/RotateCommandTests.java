@@ -1,7 +1,6 @@
-package me.alexand.spacebattle;
+package me.alexand.spacebattle.service.commands;
 
 import me.alexand.spacebattle.service.IRotatable;
-import me.alexand.spacebattle.service.commands.Rotate;
 import me.alexand.spacebattle.service.exceptions.AngularVelocityReadException;
 import me.alexand.spacebattle.service.exceptions.DirectionReadException;
 import me.alexand.spacebattle.service.exceptions.DirectionWriteException;
@@ -27,7 +26,7 @@ public class RotateCommandTests {
         when(rotatable.getAngularVelocity()).thenReturn(angularVelocity);
         when(rotatable.getDirectionsNumber()).thenReturn(directionsNumber);
 
-        new Rotate(rotatable).execute();
+        new RotateCommand(rotatable).execute();
 
         verify(rotatable, times(1)).setDirection(newDirection);
     }
@@ -36,7 +35,7 @@ public class RotateCommandTests {
     void shouldFailDueToImpossibleGetDirection(@Mock IRotatable rotatable) {
         when(rotatable.getDirection()).thenThrow(DirectionReadException.class);
 
-        assertThatThrownBy(() -> new Rotate(rotatable).execute())
+        assertThatThrownBy(() -> new RotateCommand(rotatable).execute())
                 .isInstanceOf(DirectionReadException.class);
 
         verify(rotatable, times(1)).getDirection();
@@ -46,7 +45,7 @@ public class RotateCommandTests {
     void shouldFailDueToImpossibleGetAngularVelocity(@Mock IRotatable rotatable) {
         when(rotatable.getAngularVelocity()).thenThrow(AngularVelocityReadException.class);
 
-        assertThatThrownBy(() -> new Rotate(rotatable).execute())
+        assertThatThrownBy(() -> new RotateCommand(rotatable).execute())
                 .isInstanceOf(AngularVelocityReadException.class);
 
         verify(rotatable, times(1)).getAngularVelocity();
@@ -64,7 +63,7 @@ public class RotateCommandTests {
         doThrow(DirectionWriteException.class).when(rotatable)
                 .setDirection(anyInt());
 
-        assertThatThrownBy(() -> new Rotate(rotatable).execute())
+        assertThatThrownBy(() -> new RotateCommand(rotatable).execute())
                 .isInstanceOf(DirectionWriteException.class);
 
         verify(rotatable, times(1)).setDirection(anyInt());

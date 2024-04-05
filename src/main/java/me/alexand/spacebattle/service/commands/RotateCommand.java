@@ -5,7 +5,7 @@ import me.alexand.spacebattle.service.ICommand;
 import me.alexand.spacebattle.service.IRotatable;
 
 @RequiredArgsConstructor
-public class Rotate implements ICommand {
+public class RotateCommand implements ICommand {
 
     private final IRotatable rotatableObject;
 

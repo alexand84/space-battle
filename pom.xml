@@ -6,12 +6,14 @@
 
     <groupId>me.alexand</groupId>
     <artifactId>space-battle</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.0</version>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <slf4j.api.version>1.7.36</slf4j.api.version>
+        <logback.version>1.4.14</logback.version>
         <lombok.version>1.18.30</lombok.version>
         <junit.jupiter.version>5.10.2</junit.jupiter.version>
         <mockito.version>5.3.1</mockito.version>
@@ -19,6 +21,19 @@
     </properties>
 
     <dependencies>
+
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>33.1.0-jre</version>
+        </dependency>
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
