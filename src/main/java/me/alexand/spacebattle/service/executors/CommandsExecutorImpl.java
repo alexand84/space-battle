@@ -1,6 +1,8 @@
-package me.alexand.spacebattle.service;
+package me.alexand.spacebattle.service.executors;
 
 import lombok.RequiredArgsConstructor;
+import me.alexand.spacebattle.service.ICommand;
+import me.alexand.spacebattle.service.ICommandsExecutor;
 import me.alexand.spacebattle.service.exceptions.handlers.ExceptionHandlers;
 
 import java.util.concurrent.BlockingQueue;

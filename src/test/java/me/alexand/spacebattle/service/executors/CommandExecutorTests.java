@@ -1,6 +1,5 @@
-package me.alexand.spacebattle;
+package me.alexand.spacebattle.service.executors;
 
-import me.alexand.spacebattle.service.CommandsExecutorImpl;
 import me.alexand.spacebattle.service.ICommand;
 import me.alexand.spacebattle.service.ICommandsExecutor;
 import me.alexand.spacebattle.service.exceptions.handlers.ExceptionHandlers;
@@ -72,7 +71,5 @@ public class CommandExecutorTests {
         verify(handler, times(1)).handle(eq(mainCommand), eq(exception));
         verifyNoMoreInteractions(queue, mainCommand, commandOnFail, handler);
     }
-
-    //TODO add test with fail commandOnFail
 
 }

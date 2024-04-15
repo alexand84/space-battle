@@ -8,6 +8,6 @@ public interface ExceptionHandlers {
                   Class<? extends Throwable> exceptionType,
                   Handler handler);
 
-    ICommand handle(ICommand command, Throwable throwablle);
+    ICommand handle(ICommand command, Throwable throwable);
 
 }
